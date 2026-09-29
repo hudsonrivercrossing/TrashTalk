@@ -140,7 +140,7 @@ def render_article(path: Path, article_number: int) -> tuple[str, dict[str, str]
   <a class="skip-link" href="#main">跳到正文</a>
   <main id="main" class="article-shell">
     <header class="article-intro">
-      <p class="eyebrow"><span>LONGFORM</span><span>·</span><time datetime="{iso_date}">{date_label}</time></p>
+      <p class="eyebrow"><time datetime="{iso_date}">{date_label}</time></p>
       <h1>{html.escape(title)}</h1>
       <p class="article-deck">{html.escape(deck)}</p>
       <div class="article-meta"><span>两个人的对谈</span><span class="meta-dot" aria-hidden="true"></span><span>按原对话顺序整理</span></div>
@@ -189,22 +189,19 @@ def render_home(articles: list[dict[str, str]]) -> str:
   <a class="skip-link" href="#archive">跳到文章列表</a>
   <main id="main">
     <section class="hero" aria-labelledby="hero-title">
+      <figure class="hero-mark">
+        <img src="assets/branding/trash-talk-icon.svg" width="350" height="350" alt="乱丢垃圾 Trash Talk 黄色方形标志，黑色中文字与飞起的纸团">
+      </figure>
       <div class="hero-copy">
-        <p class="eyebrow">CONVERSATIONS · LONGFORM</p>
+        <p class="eyebrow">乱丢垃圾 · TRASH TALK</p>
         <h1 id="hero-title" class="visually-hidden">乱丢垃圾 · Trash Talk</h1>
         <p class="hero-deck">脑子里攒了些东西，<br>先一股脑倒出来。</p>
         <p class="hero-note">两个人，聊一个话题；不赶着下结论。闲聊，聊什么、聊成什么样，边聊边说。</p>
         <a class="read-link" href="#archive">往下读 <span aria-hidden="true">↓</span></a>
       </div>
-      <figure class="hero-mark">
-        <img src="assets/branding/trash-talk-icon.svg" width="350" height="350" alt="乱丢垃圾 Trash Talk 黄色方形标志，黑色中文字与飞起的纸团">
-      </figure>
     </section>
-    <section id="archive" class="archive" aria-labelledby="archive-title">
-      <div class="section-heading">
-        <div><p class="eyebrow">THE ARCHIVE</p><h2 id="archive-title">慢慢聊，慢慢读。</h2></div>
-        <p class="archive-count">{len(articles):02d} <span>篇长谈</span></p>
-      </div>
+    <section id="archive" class="archive" aria-label="对谈列表">
+      <p class="archive-count archive-summary">{len(articles):02d} <span>篇长谈</span></p>
       <div class="archive-list">{archive}</div>
     </section>
   </main>
