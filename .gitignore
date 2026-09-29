@@ -12,6 +12,9 @@ Thumbs.db
 *.tmp
 *.log
 
+# Local-only font experiments; add a font to tracked assets only after review
+/site/assets/fonts/local-preview/
+
 # Unused visual exploration exports; the selected SVG logo is kept in the project
 assets/branding/icon-concepts/
 
