@@ -16,7 +16,6 @@ SITE_ROOT = ROOT / "site"
 LOGO_SOURCE = ROOT / "assets" / "branding" / "trash-talk-icon.svg"
 LOGO_OUTPUT = SITE_ROOT / "assets" / "branding" / "trash-talk-icon.svg"
 CSS_PATH = "assets/site.css"
-FONT_STYLESHEET = "https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap"
 
 
 def inline_markdown(value: str) -> str:
@@ -124,9 +123,6 @@ def document_head(title: str, description: str, base_path: str) -> str:
   <meta name="description" content="{safe_description}">
   <title>{safe_title} · 乱丢垃圾 / Trash Talk</title>
   <link rel="icon" href="{favicon_href}" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="{FONT_STYLESHEET}" rel="stylesheet">
   <link rel="stylesheet" href="{css_href}">
 </head>'''
 
@@ -142,13 +138,6 @@ def render_article(path: Path, article_number: int) -> tuple[str, dict[str, str]
     page = f'''{header}
 <body class="article-page">
   <a class="skip-link" href="#main">跳到正文</a>
-  <header class="site-header article-header">
-    <a class="brand" href="../index.html" aria-label="回到 Trash Talk 首页">
-      <img src="../assets/branding/trash-talk-icon.svg" width="46" height="46" alt="">
-      <span class="brand-copy"><span class="brand-cn">乱丢垃圾</span><span class="brand-en">TRASH TALK</span></span>
-    </a>
-    <a class="back-link" href="../index.html#archive">所有对谈 <span aria-hidden="true">↗</span></a>
-  </header>
   <main id="main" class="article-shell">
     <header class="article-intro">
       <p class="eyebrow"><span>LONGFORM</span><span>·</span><time datetime="{iso_date}">{date_label}</time></p>
@@ -198,27 +187,18 @@ def render_home(articles: list[dict[str, str]]) -> str:
     page = f'''{document_head("首页", "两个人，聊一个话题；不赶着下结论。", "")}
 <body class="home-page">
   <a class="skip-link" href="#archive">跳到文章列表</a>
-  <header class="site-header home-header">
-    <a class="brand" href="index.html" aria-label="Trash Talk 首页">
-      <img src="assets/branding/trash-talk-icon.svg" width="48" height="48" alt="">
-      <span class="brand-copy"><span class="brand-cn">乱丢垃圾</span><span class="brand-en">TRASH TALK</span></span>
-    </a>
-    <a class="nav-link" href="#archive">文章列表 <span aria-hidden="true">↓</span></a>
-  </header>
   <main id="main">
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="eyebrow"><span>CONVERSATIONS</span><span>·</span><span>LONGFORM</span></p>
-        <h1 id="hero-title"><span class="hero-calligraphy">乱丢垃圾</span><span class="hero-title-en">TRASH TALK</span></h1>
+        <p class="eyebrow">CONVERSATIONS · LONGFORM</p>
+        <h1 id="hero-title" class="visually-hidden">乱丢垃圾 · Trash Talk</h1>
         <p class="hero-deck">脑子里攒了些东西，<br>先一股脑倒出来。</p>
-        <p class="hero-note">两个人，聊一个话题；不赶着下结论。<br>闲聊。聊什么、聊成什么样，边聊边说。</p>
+        <p class="hero-note">两个人，聊一个话题；不赶着下结论。闲聊，聊什么、聊成什么样，边聊边说。</p>
         <a class="read-link" href="#archive">往下读 <span aria-hidden="true">↓</span></a>
       </div>
       <figure class="hero-mark">
-        <img src="assets/branding/trash-talk-icon.svg" width="350" height="350" alt="乱丢垃圾的黄色图标，一团纸被抛向空中">
-        <figcaption><span>ISSUE 01</span><span>OPEN CONVERSATION</span></figcaption>
+        <img src="assets/branding/trash-talk-icon.svg" width="350" height="350" alt="乱丢垃圾 Trash Talk 黄色方形标志，黑色中文字与飞起的纸团">
       </figure>
-      <span class="hero-side-note" aria-hidden="true">THOUGHTS, LEFT LOOSE.</span>
     </section>
     <section id="archive" class="archive" aria-labelledby="archive-title">
       <div class="section-heading">

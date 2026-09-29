@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1200" preserveAspectRatio="none">
+  <defs>
+    <filter id="grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency=".62" numOctaves="3" seed="21"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+    <linearGradient id="crease" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity=".58"/>
+      <stop offset=".48" stop-color="#8c7c65" stop-opacity=".09"/>
+      <stop offset="1" stop-color="#fff" stop-opacity=".4"/>
+    </linearGradient>
+  </defs>
+  <g fill="none" stroke-linecap="round">
+    <path d="M-60 178 C130 226 208 72 390 112 S668 256 848 164 S1166 103 1510 189" stroke="#8c7b62" stroke-opacity=".10" stroke-width="4"/>
+    <path d="M-60 173 C130 221 208 67 390 107 S668 251 848 159 S1166 98 1510 184" stroke="#fff" stroke-opacity=".54" stroke-width="2"/>
+    <path d="M-80 594 C150 480 261 668 468 591 S761 459 924 564 S1212 699 1510 552" stroke="#83745f" stroke-opacity=".075" stroke-width="5"/>
+    <path d="M-80 588 C150 474 261 662 468 585 S761 453 924 558 S1212 693 1510 546" stroke="#fff" stroke-opacity=".4" stroke-width="2"/>
+    <path d="M-40 1005 C174 916 350 1048 518 970 S819 891 1012 1001 S1296 1085 1490 957" stroke="#88775d" stroke-opacity=".08" stroke-width="4"/>
+    <path d="M-40 999 C174 910 350 1042 518 964 S819 885 1012 995 S1296 1079 1490 951" stroke="#fff" stroke-opacity=".42" stroke-width="2"/>
+    <path d="M236 -80 C313 126 175 265 287 424 S407 703 286 870 S221 1087 321 1280" stroke="url(#crease)" stroke-width="8"/>
+    <path d="M1044 -80 C968 135 1108 275 1004 433 S876 696 1008 852 S1081 1090 972 1280" stroke="url(#crease)" stroke-width="10"/>
+    <path d="M655 -80 C722 136 584 306 702 484 S812 745 681 923 S609 1109 719 1280" stroke="#fff" stroke-opacity=".19" stroke-width="3"/>
+  </g>
+  <rect width="100%" height="100%" filter="url(#grain)" opacity=".13"/>
+</svg>
