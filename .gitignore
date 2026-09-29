@@ -1,0 +1,39 @@
+# Local secrets and environment files
+.env
+.env.*
+!.env.example
+
+# Local Python environment and generated files
+.venv/
+__pycache__/
+*.py[cod]
+.DS_Store
+Thumbs.db
+*.tmp
+*.log
+
+# Unused visual exploration exports; the selected SVG logo is kept in the project
+assets/branding/icon-concepts/
+
+# Private source recordings and speaker-reference clips
+audio/originals/
+audio/references/
+*.m4a
+*.mp3
+*.wav
+*.mp4
+*.flac
+*.ogg
+*.webm
+*.aac
+*.caf
+*.aif
+*.aiff
+*.mov
+
+# Raw and intermediate machine transcripts; publish-longform Markdown stays trackable
+*.diarized.json
+*.diarized.txt
+*.polished.txt
+*.raw.json
+*.raw.txt

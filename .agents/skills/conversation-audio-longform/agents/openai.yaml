@@ -1,0 +1,3 @@
+interface:
+  display_name: "Conversation Audio to Longform"
+  short_description: "Turn recorded conversations into faithful publishable transcripts"
