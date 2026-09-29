@@ -38,12 +38,9 @@ body::before {
   inset: 0;
   pointer-events: none;
   content: "";
-  opacity: .52;
-  background-image:
-    radial-gradient(ellipse at 14% 18%, rgb(255 255 255 / 58%), transparent 38%),
-    radial-gradient(ellipse at 88% 79%, rgb(133 106 77 / 10%), transparent 45%),
-    url("paper-texture.svg");
-  background-size: cover, cover, cover;
+  opacity: .36;
+  background-image: url("paper-texture.jpg");
+  background-size: cover;
   mix-blend-mode: multiply;
 }
 a { color: inherit; text-decoration: none; }
