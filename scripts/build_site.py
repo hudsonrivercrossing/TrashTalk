@@ -12,6 +12,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PUBLISH_ROOT = ROOT / "transcripts" / "assemblyai"
+PUBLISHED_SOURCES = ROOT / "publishing" / "published-sources.txt"
 SITE_ROOT = ROOT / "site"
 LOGO_SOURCE = ROOT / "assets" / "branding" / "trash-talk-icon.svg"
 LOGO_OUTPUT = SITE_ROOT / "assets" / "branding" / "trash-talk-icon.svg"
@@ -212,8 +213,43 @@ def render_home(articles: list[dict[str, str]]) -> str:
     return page
 
 
+def published_markdown_sources() -> list[Path]:
+    """Load only human-approved Markdown paths from the publication manifest."""
+    if not PUBLISHED_SOURCES.exists():
+        raise FileNotFoundError(
+            f"Missing publication manifest: {PUBLISHED_SOURCES.relative_to(ROOT)}"
+        )
+
+    sources: list[Path] = []
+    for line_number, raw_line in enumerate(
+        PUBLISHED_SOURCES.read_text(encoding="utf-8").splitlines(), start=1
+    ):
+        value = raw_line.strip()
+        if not value or value.startswith("#"):
+            continue
+        relative = Path(value)
+        if relative.is_absolute() or ".." in relative.parts:
+            raise ValueError(
+                f"Invalid path at {PUBLISHED_SOURCES.relative_to(ROOT)}:{line_number}: {value}"
+            )
+        source = (ROOT / relative).resolve()
+        if not source.is_relative_to(PUBLISH_ROOT.resolve()):
+            raise ValueError(
+                f"Published source must live under {PUBLISH_ROOT.relative_to(ROOT)}: {value}"
+            )
+        if not source.is_file():
+            raise FileNotFoundError(
+                f"Published source listed at {PUBLISHED_SOURCES.relative_to(ROOT)}:{line_number} "
+                f"does not exist: {value}"
+            )
+        if not source.name.endswith(".publish-longform.md"):
+            raise ValueError(f"Not a publish-longform Markdown file: {value}")
+        sources.append(source)
+    return sorted(set(sources))
+
+
 def main() -> None:
-    sources = sorted(PUBLISH_ROOT.glob("*/*.publish-longform.md"))
+    sources = published_markdown_sources()
     SITE_ROOT.mkdir(parents=True, exist_ok=True)
     article_dir = SITE_ROOT / "articles"
     article_dir.mkdir(parents=True, exist_ok=True)

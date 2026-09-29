@@ -1,0 +1,3 @@
+# Human-reviewed Markdown manuscripts published on GitHub Pages.
+# Add a path only after the user has approved the manuscript.
+transcripts/assemblyai/乱丢垃圾 20260927 part 1/乱丢垃圾 20260927 part 1.publish-longform.md

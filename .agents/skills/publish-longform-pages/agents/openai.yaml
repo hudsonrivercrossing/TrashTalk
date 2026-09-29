@@ -1,0 +1,4 @@
+interface:
+  display_name: "Publish Longform to Pages"
+  short_description: "Publish an approved longform Markdown article"
+  default_prompt: "Use $publish-longform-pages to publish this human-reviewed longform Markdown."

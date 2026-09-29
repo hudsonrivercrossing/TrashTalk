@@ -1,0 +1,4 @@
+interface:
+  display_name: "Sync Longform Pages"
+  short_description: "Keep published HTML aligned with source Markdown"
+  default_prompt: "Use $sync-longform-pages to reconcile published HTML against approved Markdown."
