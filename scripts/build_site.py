@@ -17,12 +17,20 @@ SITE_ROOT = ROOT / "site"
 LOGO_SOURCE = ROOT / "assets" / "branding" / "trash-talk-icon.svg"
 LOGO_OUTPUT = SITE_ROOT / "assets" / "branding" / "trash-talk-icon.svg"
 CSS_PATH = "assets/site.css"
+LINK_PATTERN = re.compile(r"\[([^\]]+)\]\((https?://[^\s)]+)\)")
 
 
 def inline_markdown(value: str) -> str:
     escaped = html.escape(value, quote=False)
     escaped = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", escaped)
     escaped = re.sub(r"\*(.+?)\*", r"<em>\1</em>", escaped)
+    escaped = LINK_PATTERN.sub(
+        lambda match: (
+            f'<a href="{html.escape(match.group(2), quote=True)}" '
+            f'target="_blank" rel="noopener noreferrer">{match.group(1)}</a>'
+        ),
+        escaped,
+    )
     return escaped
 
 
