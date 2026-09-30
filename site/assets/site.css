@@ -145,6 +145,13 @@ a:focus-visible { outline: 2px solid var(--red); outline-offset: 5px; }
 .turn-copy p:last-child { margin-bottom: 0; }
 .turn-copy strong { font-weight: 700; }
 .turn-copy em { font-style: italic; }
+.dialogue a {
+  text-decoration: underline;
+  text-decoration-color: rgb(147 75 60 / 42%);
+  text-decoration-thickness: 1px;
+  text-underline-offset: .18em;
+}
+.dialogue a:hover { text-decoration-color: var(--red); }
 .article-end { display: flex; justify-content: space-between; gap: 20px; padding: 20px 0 50px; border-top: 1px solid var(--line); font-size: .9rem; }
 .article-end a { display: inline-flex; gap: 8px; }
 .article-end a span { color: var(--red); }
