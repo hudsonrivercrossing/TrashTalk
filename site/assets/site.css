@@ -18,6 +18,13 @@
   font-weight: 400;
   font-display: swap;
 }
+@font-face {
+  font-family: "Zhuque Fangsong";
+  src: url("fonts/ZhuqueFangsong-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
 * { box-sizing: border-box; }
 html { min-height: 100%; background: var(--paper); scroll-behavior: smooth; }
 body {
@@ -138,6 +145,7 @@ a:focus-visible { outline: 2px solid var(--red); outline-offset: 5px; }
 .article-rule { display: flex; align-items: center; gap: 12px; width: 76px; margin: 0 auto 38px; color: var(--red); font-size: .85rem; }
 .article-rule i { flex: 1; height: 1px; background: var(--line); }
 .dialogue { padding-bottom: 48px; }
+.dialogue .turn-copy { font-family: "Zhuque Fangsong", var(--print); }
 .turn { display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 15px; margin: 0 0 29px; }
 .speaker-label { padding-top: 5px; color: var(--red); font-size: .9rem; line-height: 1.7; letter-spacing: .06em; }
 .speaker-b .speaker-label { color: #896919; }
